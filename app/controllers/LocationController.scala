@@ -35,7 +35,12 @@ class LocationController @Inject()(mongo: MongoClient) extends Controller {
     request =>
       collection.find(Json.obj("name" -> name)).sort(Json.obj("timestamp" -> -1)).head[Location].map {
         result : Location =>
-          Ok(result.toString)
+          Ok(Json.toJson(result))
+      } recover {
+        case _ : NoSuchElementException =>
+          NotFound
+        case _ : Throwable =>
+          InternalServerError
       }
 
   }
