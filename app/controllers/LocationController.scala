@@ -33,9 +33,9 @@ class LocationController @Inject()(mongo: MongoClient) extends Controller {
 
   def getLocation(name : String) = Action.async {
     request =>
-      collection.find(Json.obj("name" -> name)).collect[Location].map {
-        result =>
-          Ok(result.toString())
+      collection.find(Json.obj("name" -> name)).sort(Json.obj("timestamp" -> -1)).head[Location].map {
+        result : Location =>
+          Ok(result.toString)
       }
 
   }
