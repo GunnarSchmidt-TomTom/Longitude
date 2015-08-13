@@ -24,3 +24,6 @@ routesGenerator := InjectedRoutesGenerator
 
 
 fork in run := true
+
+resolvers += Resolver.sonatypeRepo("releases")
+libraryDependencies += "com.evojam" %% "play-mongodb-driver" % "0.3.1"
