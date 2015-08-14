@@ -9,6 +9,6 @@ GET     /                           controllers.Application.index
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
 
-POST    /api/location               controllers.LocationController.postLocation
+POST   /api/location               controllers.LocationController.postLocation
 
-GET    /api/location/:name               controllers.LocationController.getLocation(name : String)
+GET    /api/location/:name         controllers.LocationController.getLocation(name : String)
